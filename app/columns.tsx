@@ -1,6 +1,6 @@
 'use client';
 
-import { Tables } from '@/db_types';
+import { Tables } from '@/db-types';
 import { Column, ColumnDef } from '@tanstack/react-table';
 import { ArrowUpDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -13,10 +13,12 @@ function SortButton({
 	column: Column<Grade>;
 	columnName: string;
 }) {
+	// LEVEL 2: Step 3: Koristiti 'useSearchParams' i 'usePathname' za dohvačanje trenutne parametre i putanju
 	const searchParams = useSearchParams();
 	const pathname = usePathname();
 	const { replace } = useRouter();
 
+	// LEVEL 2: Step 4: Dopuniti handleSort funckiju da postavi 'sort' parametar u URL
 	const handleSort = () => {
 		const isAsc = column.getIsSorted() === 'asc';
 		const sortDirection = isAsc ? 'desc' : 'asc';
@@ -54,6 +56,8 @@ export const gradeColumns: ColumnDef<Grade>[] = [
 		accessorFn(row) {
 			return row.student.name;
 		},
+		// LEVEL 2: Step 5: Zamijeniti 'header' sa SortButton komponentom
+		//header: 'Student',
 		header: ({ column }) => <SortButton column={column} columnName='Student' />,
 	},
 	{

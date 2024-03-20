@@ -105,7 +105,7 @@ export type Database = {
         }
         Returns: number
       }
-      complex_search: {
+      get_grades: {
         Args: {
           query: string
           page: number

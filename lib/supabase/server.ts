@@ -1,45 +1,45 @@
-import { Database } from '@/db_types';
-import { createServerClient, type CookieOptions } from '@supabase/ssr';
-import { cookies } from 'next/headers';
+import { Database } from "@/db-types";
+import { type CookieOptions, createServerClient } from "@supabase/ssr";
+import { cookies } from "next/headers";
 
 export const createClient = () => {
-	const cookieStore = cookies();
+  const cookieStore = cookies();
 
-	return createServerClient<Database>(
-		process.env.NEXT_PUBLIC_SUPABASE_URL!,
-		process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-		{
-			cookies: {
-				get(name: string) {
-					return cookieStore.get(name)?.value;
-				},
-				set(name: string, value: string, options: CookieOptions) {
-					try {
-						cookieStore.set({ name, value, ...options });
-					} catch (error) {
-						// The `set` method was called from a Server Component.
-						// This can be ignored if you have middleware refreshing
-						// user sessions.
-					}
-				},
-				remove(name: string, options: CookieOptions) {
-					try {
-						cookieStore.set({ name, value: '', ...options });
-					} catch (error) {
-						// The `delete` method was called from a Server Component.
-						// This can be ignored if you have middleware refreshing
-						// user sessions.
-					}
-				},
-			},
-		}
-	);
+  return createServerClient<Database>(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        get(name: string) {
+          return cookieStore.get(name)?.value;
+        },
+        set(name: string, value: string, options: CookieOptions) {
+          try {
+            cookieStore.set({ name, value, ...options });
+          } catch (error) {
+            // The `set` method was called from a Server Component.
+            // This can be ignored if you have middleware refreshing
+            // user sessions.
+          }
+        },
+        remove(name: string, options: CookieOptions) {
+          try {
+            cookieStore.set({ name, value: "", ...options });
+          } catch (error) {
+            // The `delete` method was called from a Server Component.
+            // This can be ignored if you have middleware refreshing
+            // user sessions.
+          }
+        },
+      },
+    },
+  );
 };
 
-declare module '@supabase/supabase-js' {
-	// adds strict typing for raw_app_meta_data
-	interface UserAppMetadata {}
+declare module "@supabase/supabase-js" {
+  // adds strict typing for raw_app_meta_data
+  interface UserAppMetadata {}
 
-	// adds strict typing fro raw_user_meta_data
-	interface UserMetadata {}
+  // adds strict typing fro raw_user_meta_data
+  interface UserMetadata {}
 }

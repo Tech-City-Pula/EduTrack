@@ -8,4 +8,10 @@
 		"editor.defaultFormatter": "denoland.vscode-deno"
 	},
 	"deno.enable": true,
+	"todo-tree.general.tags": [
+		"LEVEL 1",
+		"LEVEL 2",
+		"LEVEL 3",
+		"LEVEL 4"
+	],
 }
