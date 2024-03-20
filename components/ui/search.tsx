@@ -9,7 +9,6 @@ export default function Search({ placeholder }: { placeholder: string }) {
 	const { replace } = useRouter();
 
 	function handleSearch(term: string) {
-		// LEVEL 4: Step 1: Dopuniti funkciju da se u URL-u promijeni parametar `query` na `term`
 		const params = new URLSearchParams(searchParams);
 		params.set('page', '1');
 		if (term) {

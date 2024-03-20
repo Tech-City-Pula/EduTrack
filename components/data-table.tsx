@@ -32,14 +32,12 @@ export function DataTable<TData, TValue>({
 	data,
 	totalPages,
 }: DataTableProps<TData, TValue>) {
-	// LEVEL 2: Step 1: Kreirati 'sorting' hook
 	const [sorting, setSorting] = React.useState<SortingState>([]);
 
 	const table = useReactTable({
 		data,
 		columns,
 		getCoreRowModel: getCoreRowModel(),
-		// LEVEL 2: Step 2: Dodati 'onSortingChange' i 'getSortedRowModel' funkcije
 		onSortingChange: setSorting,
 		getSortedRowModel: getSortedRowModel(),
 		state: {
@@ -49,7 +47,6 @@ export function DataTable<TData, TValue>({
 
 	return (
 		<>
-			{/* LEVEL 4: Step 2: Dodati Search komponentu */}
 			<div className='mt-4 flex items-center justify-between gap-2 md:mt-8'>
 				<Search placeholder='Search...' />
 			</div>
@@ -103,7 +100,6 @@ export function DataTable<TData, TValue>({
 					</TableBody>
 				</Table>
 			</div>
-			{/* LEVEL 3: Step 3: Prikaži Pagination komponentu */}
 			<div>
 				<Pagination totalPages={totalPages ?? 1} />
 			</div>

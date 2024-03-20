@@ -16,7 +16,6 @@ export default async function Page({
 
 	const supabase = createClient();
 
-	// LEVEL 1: Step 1: Fetchati podatke iz baze
 	const dataTableResponse = await supabase
 		.rpc('get_grades', {
 			query,
@@ -30,7 +29,6 @@ export default async function Page({
 		throw new Error(dataTableResponse.error.message);
 	}
 
-	// LEVEL 3: Step 2: Fetchati ukupan broj stranica
 	const totalPagesResponse = await supabase
 		.rpc('calculate_total_pages', {
 			query,
@@ -49,7 +47,6 @@ export default async function Page({
 					<h1 className='font-semibold text-lg'>EduTrack</h1>
 				</header>
 				<main className='flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6'>
-					{/* LEVEL 1: Step 2: Prikaži DataTable komponentu */}
 					<DataTable
 						columns={gradeColumns}
 						data={dataTableResponse.data}
