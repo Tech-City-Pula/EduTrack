@@ -14,19 +14,9 @@ function SortButton({
 	columnName: string;
 }) {
 	// LEVEL 2: Step 3: Koristiti 'useSearchParams' i 'usePathname' za dohvačanje trenutne parametre i putanju
-	// const searchParams = useSearchParams();
-	// const pathname = usePathname();
-	// const { replace } = useRouter();
 
 	// LEVEL 2: Step 4: Dopuniti handleSort funckiju da postavi 'sort' parametar u URL
-	const handleSort = () => {
-		// const isAsc = column.getIsSorted() === 'asc';
-		// const sortDirection = isAsc ? 'desc' : 'asc';
-		// const params = new URLSearchParams(searchParams);
-		// params.set('sort', sortDirection);
-		// replace(`${pathname}?${params.toString()}`);
-		// column.toggleSorting(isAsc);
-	};
+	const handleSort = () => {};
 
 	return (
 		<Button variant='ghost' onClick={handleSort}>
@@ -58,7 +48,6 @@ export const gradeColumns: ColumnDef<Grade>[] = [
 		},
 		// LEVEL 2: Step 5: Zamijeniti 'header' sa SortButton komponentom
 		header: 'Student',
-		// header: ({ column }) => <SortButton column={column} columnName='Student' />,
 	},
 	{
 		accessorKey: 'grade',
