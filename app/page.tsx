@@ -17,30 +17,30 @@ export default async function Page({
 	const supabase = createClient();
 
 	// LEVEL 1: Step 1: Fetchati podatke iz baze
-	const dataTableResponse = await supabase
-		.rpc('get_grades', {
-			query,
-			page: currentPage,
-			sort,
-		})
-		.select('*, student!inner(*), subject!inner(*)')
-		.returns<Grade[]>();
+	// const dataTableResponse = await supabase
+	// 	.rpc('get_grades', {
+	// 		query,
+	// 		page: currentPage,
+	// 		sort,
+	// 	})
+	// 	.select('*, student!inner(*), subject!inner(*)')
+	// 	.returns<Grade[]>();
 
-	if (dataTableResponse.error) {
-		throw new Error(dataTableResponse.error.message);
-	}
+	// if (dataTableResponse.error) {
+	// 	throw new Error(dataTableResponse.error.message);
+	// }
 
 	// LEVEL 3: Step 2: Fetchati ukupan broj stranica
-	const totalPagesResponse = await supabase
-		.rpc('calculate_total_pages', {
-			query,
-			page_size: 10,
-		})
-		.returns<number>();
+	// const totalPagesResponse = await supabase
+	// 	.rpc('calculate_total_pages', {
+	// 		query,
+	// 		page_size: 10,
+	// 	})
+	// 	.returns<number>();
 
-	if (totalPagesResponse.error) {
-		throw new Error(totalPagesResponse.error.message);
-	}
+	// if (totalPagesResponse.error) {
+	// 	throw new Error(totalPagesResponse.error.message);
+	// }
 
 	return (
 		<div className='grid min-h-screen w-full overflow-hidden'>
@@ -50,11 +50,11 @@ export default async function Page({
 				</header>
 				<main className='flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6'>
 					{/* LEVEL 1: Step 2: Prikaži DataTable komponentu */}
-					<DataTable
+					{/* <DataTable
 						columns={gradeColumns}
 						data={dataTableResponse.data}
 						totalPages={totalPagesResponse.data}
-					/>
+					/> */}
 				</main>
 			</div>
 		</div>

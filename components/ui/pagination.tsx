@@ -15,9 +15,9 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
 
 	const createPageURL = (pageNumber: number | string) => {
 		// LEVEL 3: Step 1: Dopuni funkciju da se u URL-u promijeni parametar `page` na `pageNumber`
-		const params = new URLSearchParams(searchParams);
-		params.set('page', pageNumber.toString());
-		return `${pathname}?${params.toString()}`;
+		// const params = new URLSearchParams(searchParams);
+		// params.set('page', pageNumber.toString());
+		// return `${pathname}?${params.toString()}`;
 	};
 
 	return (
