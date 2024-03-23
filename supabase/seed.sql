@@ -23,7 +23,7 @@ VALUES
 	('Kemija', 'užas'),
 	('Fizika', 'rani me');
 
-INSERT INTO public.grades (student_id, subject_id, grade)
+INSERT INTO public.grade (student_id, subject_id, grade)
 VALUES
 	(4, 2, 1),
 	(1, 3, 3),
